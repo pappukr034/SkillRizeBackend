@@ -16,7 +16,8 @@ const app=express();
 // Basi configuration
 app.use(express.json())
 app.use(cors({
-    origin: process.env.FRONTEND_URL
+    credentials:true,
+    origin: process.env.FRONTEND_URL,
 }))
 
 app.use(express.urlencoded({extended:true}))
