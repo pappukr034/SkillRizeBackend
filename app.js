@@ -15,10 +15,11 @@ const app=express();
 
 // Basi configuration
 app.use(express.json())
+console.log('PORT From process',process.env.FRONTEND_URL)
 app.use(cors({
-    credentials:true,
-    origin: process.env.FRONTEND_URL,
-}))
+  credentials:true,
+  origin:process.env.FRONTEND_URL,
+ })) 
 
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
