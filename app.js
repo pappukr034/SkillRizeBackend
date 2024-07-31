@@ -15,24 +15,11 @@ const app=express();
 
 // Basi configuration
 app.use(express.json())
-console.log('PORT From process',process.env.FRONTEND_URL)
-const allowedOrigins = [
-  'https://marvelous-hummingbird-5848d5.netlify.app',
-  'https://669d45a19171a6ae7637a6ed--marvelous-hummingbird-5848d5.netlify.app'
-];
-  
-  const corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    optionsSuccessStatus: 200,
-  };
-  
-  app.use(cors(corsOptions));
+
+app.use(cors({
+  origin:'http://localhost:5173',
+  credentials:true
+}));
   
 
 app.use(express.urlencoded({extended:true}))
