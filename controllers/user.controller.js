@@ -87,7 +87,7 @@ const login=async function (req,res,next){
     }
     const user=await User.findOne({email}).select('+password')
 
-    console.log("User login ",user)
+    // console.log("User login ",user)
  
     if(!user){
      return next(new AppError("Email doesnt exists",400))
@@ -100,7 +100,7 @@ const login=async function (req,res,next){
  
     const token= await user.generateJWTToken();
     user.password=undefined
-    console.log("Token generated at Login time ",token)
+    // console.log("Token generated at Login time ",token)
     res.cookie('token',token,cookieOption)
  
     res.status(200).json({
