@@ -17,7 +17,7 @@ const app=express();
 app.use(express.json())
 
 app.use(cors({
-  origin:'https://skillrisefrontend.onrender.com/',
+  origin:'https://skillrisefrontend.onrender.com',
   credentials:true
 }));
   
