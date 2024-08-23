@@ -17,7 +17,7 @@ export const razorpay=new Razorpay({
 })
 
 
-const port=process.env.PORT || 7001
+const port=process.env.PORT || 8009
 
 app.listen(port,async()=>{
     await connectToDB()

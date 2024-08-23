@@ -6,6 +6,7 @@ import {
   editLectureByCourseIdAndLectureId,
   getAllCourses,
   getLecturesByCourseId,
+  getSearchedCourse,
   removeLectureFromCourse,
   updateCourseById,
 } from '../controllers/course.controller.js';
@@ -26,6 +27,10 @@ router
     createCourse
   )
   .delete(isLoggedIn, authorizedRoles('ADMIN'), removeLectureFromCourse);
+
+router
+     .route('/search')
+     .get(getSearchedCourse)  
 
 router
   .route('/:id')

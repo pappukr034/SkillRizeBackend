@@ -431,3 +431,27 @@ export const editLectureByCourseIdAndLectureId=asyncHandler(async(req,res,next)=
       });
 });
 
+export const getSearchedCourse=asyncHandler(async (req,res,next)=>{
+    try {
+        const query = req.query.q;
+        if(query==""){
+          return next(new AppError('Query is reqired'));
+        }
+        console.log("Query parametr : ",query)
+        const courses = await Course.find({ 
+          $or: [
+              { title: { $regex: query, $options: 'i' } },
+              { instructor: { $regex: query, $options: 'i' } }
+          ]
+      });
+       // Sending the response after success
+      res.status(200).json({
+        success: true,
+        message: 'Course searched successfully',
+        courses
+      });
+    } catch (error) {
+      return next(new AppError('Failed to search courses', error));
+    }
+});
+
